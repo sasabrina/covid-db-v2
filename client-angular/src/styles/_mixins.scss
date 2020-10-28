@@ -1,0 +1,67 @@
+@import './variables';
+
+@mixin title{
+  margin: 0;
+  font-size: 28px;
+}
+
+@mixin main-container {
+  width: 80%;
+  margin: auto;
+  padding: 20px 0 0 0;
+}
+
+@mixin flexible($direction: null, $justify: null, $align: null){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin table($width: null){
+  border-collapse: collapse;
+  margin: 0;
+  background-color: $table-bg;
+  border-radius: 5px 5px 0 0;
+  width: $width;
+
+  thead tr {
+    color: $primary-color;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid $table-border;
+
+
+    th::first-letter {
+      text-transform: uppercase;
+    }
+  }
+  th {
+    padding: 10px 15px;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid $table-border;
+    
+    &:last-of-type {
+      border-bottom: 2px solid $primary-color;
+    }
+    td {
+      padding: 5px 15px;
+    }
+  }
+}
+
+@mixin shadow{
+  background-color: #fff;
+  box-shadow: 3px 3px 2px $shadow;
+}
+
+@mixin main-btn {
+  width: 300px;
+  color: #fff;
+  margin: 3px 0;
+  &hover{
+      color: #fff;
+  }
+}

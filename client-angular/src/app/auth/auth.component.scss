@@ -1,0 +1,7 @@
+@import '../../styles/mixins';
+
+.signin-container{
+    @include main-container;
+    @include flexible(column, center, center);
+    padding-top: 150px;
+}

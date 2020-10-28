@@ -1,0 +1,21 @@
+@import '../../../../styles/mixins';
+
+form {
+    width: 400px;
+    @include flexible(null, space-between, null);
+ 
+    .form-group {
+        min-height: 75px;
+    }
+    .mat-form-field {
+        max-width: 180px;
+    }
+    .mat-error {
+        font-size: 12px;
+    }
+
+    .actions-container {
+        min-height: 75px;
+        @include flexible(null, null, center);
+    }
+}

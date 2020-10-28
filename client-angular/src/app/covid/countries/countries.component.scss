@@ -1,0 +1,24 @@
+@import '../../../styles/mixins';
+
+.countries-container{
+  @include main-container;
+
+  h1{
+    @include title;
+    padding: 20px 0;
+  }
+  
+  .countries-content{
+    @include flexible(null, null, center);
+
+    table {
+      @include table(400px);
+       @include shadow;
+    }
+  }
+}
+
+.loading{
+  min-height: 500px;
+  @include flexible(null, center, center);
+}

@@ -1,0 +1,59 @@
+@import '../../../styles/mixins';
+
+main {
+    
+    @include flexible(null, null, null);
+    height: calc(100vh - 50px);
+    
+    aside{
+        background-color: #000;
+        width: 200px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    
+    }
+    
+    .aside-content{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+    
+            li {
+                width: 100%;
+                height: 40px;
+                font-size: 18px;
+                padding: 20px;
+                box-sizing: border-box;
+    
+                a{
+                    color: #fff
+                }
+            }
+    
+            li.user-email {
+                color: #fff;
+                font-size: 16px;
+            }
+        }
+        footer{
+            display: flex;
+            justify-content: center;
+            p{
+                text-align: center;
+                color: #fff;
+            }
+        }
+    }
+    .counter {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+    }
+}

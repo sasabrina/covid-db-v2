@@ -1,0 +1,23 @@
+@import '../../../../styles/mixins';
+
+form {
+    @include flexible(column, space-between, null);
+    width: 300px;
+    height: 265px;
+    box-sizing: border-box;
+
+    .form-group{
+        @include flexible(column, space-between, null);
+        padding-bottom: 10px;
+    }
+
+    .actions-container{
+        @include flexible(null, center, center) ;
+        padding: 5px 0;
+
+        button {
+            width: 100%;
+            margin: 0 5px;
+        }
+    }
+}

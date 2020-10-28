@@ -1,0 +1,50 @@
+<h2 mat-dilog-title>Sign in with phone number</h2>
+<form #form="ngForm" autocomplete="off" mat-dialog-content>
+
+    <div class="form-group phone-group">
+        <mat-form-field>
+            <mat-label>Phone Number</mat-label>
+            <input type="text" class="form-control" matInput placeholder="11********" required name="phone"
+                #phone="ngModel" [(ngModel)]="service.formData.phone">
+        </mat-form-field>
+
+        <div *ngIf="phone.invalid && phone.touched">
+            <mat-error>{{validateMessages.phone}}</mat-error>
+        </div>
+
+        <div id="recaptcha-container"></div>
+
+        <div class="actions-container">
+            <button mat-raised-button 
+            color="primary" 
+            [disabled]="phone.invalid"
+            (click)="signInWithPhoneNumber(form)">Send verify code</button>
+        </div>
+    </div>
+
+    <div class="form-group code-group">
+
+        <mat-form-field>
+            <mat-label>Verification code</mat-label>
+            <input type="text" class="form-control" matInput placeholder="123456" required name="code" #code="ngModel"
+                [(ngModel)]="service.formData.code">
+        </mat-form-field>
+
+        <div *ngIf="code.invalid && code.touched">
+            <mat-error>{{validateMessages.code}}</mat-error>
+        </div>
+
+        <div class="actions-container">
+            <button mat-raised-button 
+                color="primary" 
+                (click)="onClose()">Cancel</button>
+
+            <button mat-raised-button 
+                color="primary" 
+                [disabled]="code.invalid"
+                (click)="verifyCode(form)">Verify</button>
+        </div>
+
+    </div>
+
+</form>

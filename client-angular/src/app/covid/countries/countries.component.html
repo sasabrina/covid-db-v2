@@ -1,0 +1,26 @@
+<main class="countries-container" *ngIf="!loading && !errorMessage; else isLoading">
+    <h1>Countries</h1>
+
+    <section class="countries-content">
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor="let column of tableColumns">{{column}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of dataSource">
+                    <td>{{data.name}}</td>
+                    <td>{{data.infected}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <app-countries-chart></app-countries-chart>
+    </section>
+</main>
+<ng-template #isLoading>
+    <div class="loading">
+        <p *ngIf="!errorMessage">Loading data...</p>
+        <p *ngIf="errorMessage">{{errorMessage}}</p>
+    </div>
+</ng-template>

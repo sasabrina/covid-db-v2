@@ -1,0 +1,12 @@
+
+<nav>
+    <ul *ngIf="user | async; else login">
+        <li *ngIf="displayName;">{{displayName}}</li>
+        <li ><button mat-flat-button (click)="onSignOut()">Sign out</button></li>
+    </ul>
+</nav>
+<ng-template #login>
+    <ul>
+        <li><a href="/signin">Sign in</a></li>
+    </ul>
+</ng-template>

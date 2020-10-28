@@ -1,0 +1,44 @@
+<main class="infected-container" *ngIf="!loading && !errorMessage; else isLoading">
+    <header>
+        <h1>Infected</h1>
+
+        <div class="btn-container">
+            <button class="header-buttons" (click)="onAdd()">Add Infected</button>
+            <button class="header-buttons" (click)="exportExcel()">Export Data</button>
+        </div>
+    </header>
+    <div class="table-container">
+        <table id="infected-table">
+            <thead>
+                <tr>
+                    <th *ngFor="let column of columns" [id]="column.id" (click)="sortTable(column.id)">{{column.name}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of infected | paginate: { itemsPerPage: 10, currentPage: p } | sort : sortedColumn : sortAsc" [ngClass]="{'gray-row' : data.status_id===2}">
+                    <td>{{data.first_name}}</td>
+                    <td>{{data.last_name}}</td>
+                    <td>{{data.country_name}}</td>
+                    <td>{{data.age}}</td>
+                    <td>
+                        <span *ngIf="data.gender_id === 1">Female</span>
+                        <span *ngIf="data.gender_id === 2">Male</span>
+                    </td>
+                    <td>{{data.infect_date | date:"MM/dd/yy"}}</td>
+                    <td>
+                        <button mat-icon-button (click)="onEdit(data)"><mat-icon>create</mat-icon></button>
+                        <button mat-icon-button (click)="onDelete(data.id)"><mat-icon>delete</mat-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls class="pagination" (pageChange)="p = $event" responsive="true"></pagination-controls>
+    </div>
+    <app-infected-chart></app-infected-chart>
+</main>
+<ng-template #isLoading>
+    <div class="loading">
+        <p *ngIf="!errorMessage">Loading data...</p>
+        <p *ngIf="errorMessage">{{errorMessage}}</p>
+    </div>
+</ng-template>

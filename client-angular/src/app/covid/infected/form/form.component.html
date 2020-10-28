@@ -1,0 +1,153 @@
+<div class="form-app-container"> 
+    <h1 mat-dilog-title>{{title}}</h1>
+    <form #form="ngForm" 
+        autocomplete="off"
+        mat-dialog-content
+    >
+        <div class="tile">
+
+            <!-- first name -->
+            <div class="form-group">
+                <mat-form-field>
+                    <input type="text"
+                        class="form-control"
+                        matInput 
+                        placeholder="First name"
+                        required
+                        name="first_name"
+                        #first_name="ngModel"
+                        [(ngModel)]="service.formData.first_name"
+                    >
+                </mat-form-field>
+                <div *ngIf="first_name.invalid && first_name.touched">
+                    <mat-error>{{validateMessage}}</mat-error>
+                </div>
+            </div>
+            
+            <!-- last name -->
+            <div class="form-group">
+                <mat-form-field>
+                    <input type="text"
+                        class="form-control"
+                        matInput 
+                        placeholder="Last name"
+                        required
+                        name="last_name"
+                        #last_name="ngModel"
+                        [(ngModel)]="service.formData.last_name"
+                    >
+                </mat-form-field>
+                <div *ngIf="last_name.invalid && last_name.touched">
+                    <mat-error>{{validateMessage}}</mat-error>
+                </div>
+            </div>
+
+            <!-- birth date -->
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput 
+                        [matDatepicker]="birthPicker" 
+                        name="age" 
+                        placeholder="Birth date"
+                        required
+                        #age="ngModel"
+                        [(ngModel)]="service.formData.age"
+                    >
+                    <mat-datepicker-toggle matSuffix [for]="birthPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #birthPicker></mat-datepicker>
+                </mat-form-field>
+                <div *ngIf="age.invalid && age.touched">
+                    <mat-error>{{validateMessage}}</mat-error>
+                </div>
+            </div>
+
+            <!-- infect date -->
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput 
+                        [matDatepicker]="infectPicker" 
+                        name="infect_date"
+                        placeholder="Infect date" 
+                        required
+                        #infect_date="ngModel"
+                        [(ngModel)]="service.formData.infect_date"
+                    >
+                    <mat-datepicker-toggle matSuffix [for]="infectPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #infectPicker></mat-datepicker>
+                </mat-form-field>
+                <div *ngIf="infect_date.invalid && infect_date.touched">
+                    <mat-error>{{validateMessage}}</mat-error>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tile">
+            <!-- gender -->
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-select name="gender_id" 
+                        matInput 
+                        placeholder="Gender"
+                        required
+                        #gender_id="ngModel"
+                        [(ngModel)]="service.formData.gender_id"
+                    >
+                        <mat-option value="female">Female</mat-option>
+                        <mat-option value="male">Male</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div *ngIf="gender_id.invalid && gender_id.touched">
+                    <mat-error>{{validateMessage}}</mat-error>
+                </div>
+            </div>
+
+             <!-- country -->
+             <div class="form-group">
+                <mat-form-field>
+                    <mat-select name="country_name" 
+                        matInput 
+                        placeholder="Country" 
+                        required
+                        #country_name="ngModel"
+                        [(ngModel)]="service.formData.country_name" 
+                    >
+                        <mat-option *ngFor="let country of countries" value={{country.name}}>{{country.name}}</mat-option>
+                    
+                    </mat-select>
+                </mat-form-field>
+                <div *ngIf="country_name.invalname && country_name.touched">
+                    <mat-error>{{validateMessage}}</mat-error>
+                </div>
+            </div>
+
+            <!-- alive -->
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-select name="status_id" 
+                        matInput 
+                        placeholder="Is alive" 
+                        equired
+                        #status_id="ngModel"
+                        [(ngModel)]="service.formData.status_id"
+                    >
+                        <mat-option value="yes">Yes</mat-option>
+                        <mat-option value="no">No</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div *ngIf="status_id.invalid && status_id.touched">
+                    <mat-error>{{validateMessage}}</mat-error>
+                </div>
+            </div>
+            
+            <div class="actions-container">
+                <button mat-button (click)="onClose()">Cancel</button>
+                <button type="submit" 
+                    mat-button color="primary" 
+                    [disabled]="form.invalid"
+                    (click)="onSubmit(form)"
+                >Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

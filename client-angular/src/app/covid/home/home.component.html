@@ -1,0 +1,19 @@
+<main>
+
+    <aside>
+        <section class="aside-content">
+            <nav>
+                <ul>
+                    <li><a [routerLink]="['']">Home</a></li>
+                    <li><a [routerLink]="['countries']">Countries</a></li>
+                    <li><a [routerLink]="['infected']">Infected</a></li>
+                </ul>
+            </nav>
+            <footer>
+                <p>- © 2020</p>
+            </footer>
+        </section>
+    </aside>
+    <app-counter class="counter"></app-counter>
+    <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,62 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.infected-container{
+    @include main-container;
+
+    .gray-row{
+        color: $deceased-row;
+    }
+    
+    header{
+        @include flexible(null, space-between, center);
+        padding: 20px 0;
+        
+        h1{
+            @include title;
+        }
+
+        .header-buttons{
+            background-color: $primary-color;
+            color: #fff;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 50px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            
+            &:last-of-type {
+                margin-left: 10px;
+            }
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
+
+    .table-container{
+        @include flexible(column, null, flex-end);
+        @include shadow;
+
+        table {
+            @include table(100%);
+
+            .mat-icon-button{
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+
+                &:last-of-type {
+                    padding-left: 10px;
+                }
+            }
+        }
+    
+    }
+    
+}
+.loading{
+    min-height: 500px;
+    @include flexible(null, center, center);
+}

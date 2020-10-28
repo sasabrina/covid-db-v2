@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "varios-blockinar": {
+      "hosting": {
+        "covid19DB": [
+          "varios-blockinar"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import '../../../../styles/mixins';
+
+.chart-wrapper {
+    @include flexible(null, null, flex-end);
+    width: 550px;
+    min-height: 400px;
+    margin: auto;
+    padding-bottom: 30px;
+}
+

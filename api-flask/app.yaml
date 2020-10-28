@@ -1,0 +1,26 @@
+runtime: python37
+entrypoint: gunicorn -b 0.0.0.0:8081 app:app
+
+env_variables:
+  CLOUD_SQL_CONNECTION_NAME: "?unix_socket=/cloudsql/varios-blockinar:us-central1:mysql1"
+  DB_USER: sabri
+  DB_PASS: 123cuatro
+  DB_NAME: covid_sabri
+
+handlers:
+- url: /api/.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301
+
+- url: /(.*\.(gif|svg|png|jpg|jpeg|ico|css|js|woff|woff2|ttf)(|\.map))$
+  static_files: dist/\1
+  upload: dist/(.*)(|\.map)
+  secure: always
+  redirect_http_response_code: 301
+
+- url: /(.*)
+  static_files: dist/index.html
+  upload: dist/index.html
+  secure: always
+  redirect_http_response_code: 301

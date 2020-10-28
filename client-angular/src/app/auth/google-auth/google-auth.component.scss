@@ -1,0 +1,6 @@
+@import '../../../styles/mixins';
+
+button{
+    @include main-btn;
+    background-color: #DB4437;
+}
